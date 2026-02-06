@@ -1,11 +1,6 @@
 # ovlnewspaper
 тот самый движок для любой самодельной онлайн телегазеты
 
-
-<div align="center">
-  <img height="150" src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif](https://github.com/ovlweb/ovlnewspaper/blob/main/uploads/1770410003892_photo_2025-09-16_07.15.49.jpeg?raw=true"  />
-</div>
-
 ###
 
 <h2 align="center">[ВНИМАНИЕ / vibe-кодинг использовался]<br>не используйте в production среде, только в локальной из-за отсутствия системы акаунтов</h2>
