@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Broadcast Admin</title>
+  <link rel="stylesheet" href="/styles/admin.css" />
+</head>
+<body>
+  <header>
+    <h1>Broadcast Admin</h1>
+    <nav>
+      <a href="/viewer" target="_blank">Open Viewer</a>
+    </nav>
+    <div id="toast" style="position:fixed;right:16px;top:16px;background:#0a0f18;color:#dff; border:1px solid #274160;padding:8px 12px;border-radius:8px;display:none;z-index:1000"></div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Logo</h2>
+      <div class="row">
+        <img id="logoPreview" alt="logo" />
+        <div>
+          <input type="url" id="logoUrl" placeholder="https://... or /uploads/..." />
+          <div class="row">
+            <input type="file" id="logoFile" accept="image/*" />
+            <button id="uploadLogoBtn">Upload</button>
+          </div>
+          <button id="saveLogoBtn">Save</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Sponsor ticker</h2>
+      <textarea id="ticker" rows="2"></textarea>
+      <button id="saveTickerBtn">Save</button>
+    </section>
+
+    <section>
+      <h2>Blue bar text (screen 1)</h2>
+      <input id="bluebarText" placeholder="News repost >> ..." />
+      <button id="saveBluebarBtn">Save</button>
+    </section>
+
+    <section>
+      <h2>Background (under playlist)</h2>
+      <div class="row">
+        <label><input type="checkbox" id="bgEnabled" /> enabled</label>
+        <select id="bgType">
+          <option value="image">Image</option>
+          <option value="video">Video</option>
+          <option value="none">None</option>
+        </select>
+        <select id="bgMode">
+          <option value="auto">Auto (crop 16:9 to 1.85)</option>
+          <option value="cover">Cover</option>
+          <option value="contain">Contain</option>
+          <option value="crop-185">Crop → 1.85:1</option>
+          <option value="letterbox-185">Letterbox → 1.85:1</option>
+          <option value="crop-239">Crop → 2.39:1</option>
+          <option value="letterbox-239">Letterbox → 2.39:1</option>
+        </select>
+        <input type="url" id="bgUrl" placeholder="/uploads/bg.jpg or https://..." />
+        <input type="file" id="bgFile" accept="image/*,video/*" />
+        <button id="uploadBgBtn">Upload</button>
+        <button id="saveBgBtn">Save</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Video Playlist</h2>
+      <div class="help">Paste direct file URLs (MP4/WebM) or upload a file below.</div>
+      <div id="playlist"></div>
+      <div class="row add">
+        <input id="plValue" placeholder="File URL (MP4/WebM)" />
+        <input id="plTitle" placeholder="Title (optional)" />
+        <button id="addPlBtn">Add</button>
+      </div>
+      <div class="row add">
+        <input type="file" id="plFile" accept="video/*" />
+        <button id="uploadPlBtn">Upload and add</button>
+      </div>
+      <button id="savePlBtn">Save playlist</button>
+    </section>
+
+    <section>
+      <h2>News (slideshow)</h2>
+      <div id="news"></div>
+      <div class="row add">
+        <input id="newsTitle" placeholder="Title" />
+        <input id="newsDesc" placeholder="Description" />
+        <button id="addNewsBtn">Add</button>
+      </div>
+      <button id="saveNewsBtn">Save</button>
+    </section>
+
+    <section>
+      <h2>Tips / Help</h2>
+      <div id="tips"></div>
+      <div class="row add">
+        <input id="tipValue" placeholder="Tip text" />
+        <button id="addTipBtn">Add</button>
+      </div>
+      <button id="saveTipsBtn">Save</button>
+    </section>
+
+    <section>
+      <h2>Announcements (pills)</h2>
+      <div id="annos" class="list"></div>
+      <div class="row add">
+        <input id="annoLabel" placeholder="Label (e.g. Объявление)" />
+        <input id="annoText" placeholder="Text" />
+        <button id="addAnnoBtn">Add</button>
+      </div>
+      <button id="saveAnnoBtn">Save</button>
+    </section>
+
+    <section>
+      <h2>Weather cities</h2>
+      <div class="help">Uses Open‑Meteo geocoding (no API key). List city names in English or native language.</div>
+      <div id="cities"></div>
+      <div class="row add">
+        <input id="cityValue" placeholder="City name" />
+        <button id="addCityBtn">Add</button>
+      </div>
+      <button id="saveCitiesBtn">Save</button>
+    </section>
+  </main>
+
+  <script src="/scripts/admin.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{
+  "settings": {
+    "logoUrl": "/uploads/1770410024808_photo_2025-09-16_07.15.49.jpeg",
+    "sponsorTicker": "Табличка спонсоров",
+    "bluebarText": "Новостная >>",
+    "lang": "ru",
+    "clocks": [
+      {
+        "label": "Europe-East",
+        "tz": "Europe/Moscow"
+      },
+      {
+        "label": "United States",
+        "tz": "America/New_York"
+      },
+      {
+        "label": "UTC (World)",
+        "tz": "UTC"
+      }
+    ]
+  },
+  "background": {
+    "type": "image",
+    "url": "/uploads/1770410003892_photo_2025-09-16_07.15.49.jpeg",
+    "enabled": true,
+    "mode": "auto"
+  },
+  "playlist": [],
+  "news": [
+    {
+      "title": "News title / Заголовок",
+      "description": "Описание новости. Добавьте несколько элементов — будет слайдшоу."
+    },
+    {
+      "title": "Новость номер 2",
+      "description": "Тестовая новость на этом окне"
+    }
+  ],
+  "tips": [
+    "Здесь ваше оповещения и напоминания для зрителей",
+    "Это пример работы движка телегазеты, теперь все процессы автоматизированы для корректной работы"
+  ],
+  "announcements": [
+    {
+      "label": "Объявление",
+      "text": "Тест"
+    },
+    {
+      "label": "Напоминание",
+      "text": "Внимание, все происходит в тестовом режиме имейте ввиду"
+    },
+    {
+      "label": "Объявление",
+      "text": "печеньки"
+    }
+  ],
+  "weather": {
+    "cities": [
+      "Москва"
+    ]
+  },
+  "updatedAt": 1770410091739,
+  "adBackground": {
+    "enabled": false,
+    "type": "video",
+    "url": "/uploads/1762721450367_14part.mp4",
+    "opacity": 1
+  }
+}

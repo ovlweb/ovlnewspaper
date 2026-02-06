@@ -1,0 +1,173 @@
+/* Viewer styles aiming for smooth, clean look similar to the concept */
+:root {
+  --bg: #0f1115;
+  --panel: #161a22;
+  --line: #1f7a1f;
+  --text: #e8e8ea;
+  --dim: #9aa0ab;
+  --brand: #4cc2ff;
+}
+* { box-sizing: border-box; }
+html, body, #app { height: 100%; }
+body { margin:0; background: radial-gradient(1000px 600px at 50% 10%, #22283a, #0f131c 60%, #080a10); color: var(--text); font-family: Inter, -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif; overflow: hidden; font-size: clamp(14px, 1.2vw, 18px); }
+
+.topbar { padding: 8px 16px; border-bottom: none; background: rgba(5,6,10,0.7); backdrop-filter: blur(6px); position: sticky; top:0; z-index:10; }
+/* Hide the thin border line on all screens. Keep the thick progress bar. */
+#app[data-screen="2"] .topbar .progress { display: block !important; height: 4px !important; }
+.topbar .date-time { display:grid; grid-template-columns: 1fr auto 1fr; align-items:center; }
+.topbar .date { justify-self: start; }
+.topbar .time { justify-self: end; }
+.topbar .logo-wrap { width: 92px; height: 32px; display:flex; align-items:center; justify-content:center; justify-self:center; }
+.topbar img#logo { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 1px 0 rgba(255,255,255,0.2)); }
+.topbar .progress { height: 4px; background: linear-gradient(90deg, #0c8, #0a4); width: 100%; border-radius: 999px; box-shadow: 0 0 6px #0c8 inset; }
+.date, .time { font-weight: 600; letter-spacing: 0.5px; }
+
+/* Screens */
+.screen { display:block; }
+.screen[hidden] { display:none; }
+/* Fade transitions */
+.screen { opacity: 1; transition: opacity 300ms ease; }
+.screen[hidden] { opacity: 0; pointer-events: none; }
+
+/* Screen 1 */
+.screen-1 { position: relative; }
+
+/* Newer clouds (3 parallax layers) */
+@keyframes clouds-loop-1 { to { background-position: -1000px 0; } }
+@keyframes clouds-loop-2 { to { background-position: -1000px 0; } }
+@keyframes clouds-loop-3 { to { background-position: -1579px 0; } }
+.screen-1 .clouds { position:absolute; inset:0; top:0; height:70%; pointer-events:none; opacity:.4; z-index:0; overflow:hidden; }
+.screen-1 .clouds-1,
+.screen-1 .clouds-2,
+.screen-1 .clouds-3 { position:absolute; left:0; right:0; top:0; height:500px; background-repeat: repeat-x; }
+.screen-1 .clouds-1 { background-image: url("/assets/clouds/clouds_2.png"); animation: clouds-loop-1 20s linear infinite; }
+.screen-1 .clouds-2 { background-image: url("/assets/clouds/clouds_1.png"); animation: clouds-loop-2 15s linear infinite; }
+.screen-1 .clouds-3 { background-image: url("/assets/clouds/clouds_3.png"); animation: clouds-loop-3 17s linear infinite; }
+
+/* Animated sky and skyline moved into the clocks area only */
+.clocks { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; padding: 150px; position: relative; overflow: hidden; }
+.clocks > * { position: relative; z-index: 10; }
+.clocks::after { content:""; position:absolute; left:0; right:0; bottom:0; height:50%; z-index:-2; pointer-events:none;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  /* far A, far B, near A, near B */
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='3600' height='320' viewBox='0 0 3600 320'><g fill='%231a2c3a' opacity='0.24'><rect x='0' y='170' width='120' height='150'/><rect x='140' y='150' width='160' height='170'/><polygon points='330,320 330,145 470,145 470,320 400,120'/><rect x='510' y='170' width='130' height='150'/><rect x='660' y='130' width='180' height='190'/><polygon points='870,320 870,140 1000,140 1000,320 945,115'/><rect x='1030' y='180' width='120' height='140'/><rect x='1170' y='150' width='160' height='170'/><polygon points='1360,320 1360,155 1500,155 1500,320 1430,130'/><rect x='1530' y='200' width='100' height='120'/><rect x='1640' y='160' width='170' height='160'/><polygon points='1850,320 1850,150 1980,150 1980,320 1920,125'/><rect x='2010' y='170' width='140' height='150'/><rect x='2170' y='140' width='170' height='180'/><polygon points='2380,320 2380,145 2520,145 2520,320 2450,120'/><rect x='2560' y='185' width='110' height='135'/><rect x='2690' y='150' width='175' height='170'/><polygon points='2890,320 2890,150 3030,150 3030,320 2960,125'/><rect x='3070' y='200' width='105' height='120'/><rect x='3190' y='160' width='170' height='160'/></g></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='3600' height='320' viewBox='0 0 3600 320'><g fill='%231a2c3a' opacity='0.24'><rect x='0' y='170' width='120' height='150'/><rect x='140' y='150' width='160' height='170'/><polygon points='330,320 330,145 470,145 470,320 400,120'/><rect x='510' y='170' width='130' height='150'/><rect x='660' y='130' width='180' height='190'/><polygon points='870,320 870,140 1000,140 1000,320 945,115'/><rect x='1030' y='180' width='120' height='140'/><rect x='1170' y='150' width='160' height='170'/><polygon points='1360,320 1360,155 1500,155 1500,320 1430,130'/><rect x='1530' y='200' width='100' height='120'/><rect x='1640' y='160' width='170' height='160'/><polygon points='1850,320 1850,150 1980,150 1980,320 1920,125'/><rect x='2010' y='170' width='140' height='150'/><rect x='2170' y='140' width='170' height='180'/><polygon points='2380,320 2380,145 2520,145 2520,320 2450,120'/><rect x='2560' y='185' width='110' height='135'/><rect x='2690' y='150' width='175' height='170'/><polygon points='2890,320 2890,150 3030,150 3030,320 2960,125'/><rect x='3070' y='200' width='105' height='120'/><rect x='3190' y='160' width='170' height='160'/></g></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4200' height='340' viewBox='0 0 4200 340'><g fill='%230f1a26' opacity='0.55'><rect x='0' y='190' width='140' height='150'/><polygon points='170,340 170,120 300,120 300,340 235,90'/><rect x='330' y='170' width='150' height='170'/><polygon points='500,340 500,140 650,140 650,340 580,110 560,140'/><rect x='700' y='200' width='120' height='140'/><polygon points='840,340 840,150 980,150 980,340 910,125'/><rect x='1000' y='130' width='180' height='210'/><polygon points='1210,340 1210,160 1330,160 1330,340 1270,135'/><rect x='1350' y='190' width='140' height='150'/><polygon points='1510,340 1510,130 1650,130 1650,340 1580,105'/><rect x='1680' y='170' width='150' height='170'/><polygon points='1860,340 1860,150 1990,150 1990,340 1925,125'/><rect x='2010' y='210' width='110' height='130'/><polygon points='2135,340 2135,140 2260,140 2260,340 2195,115'/><rect x='2290' y='160' width='160' height='180'/><polygon points='2470,340 2470,150 2620,150 2620,340 2560,120'/><rect x='2650' y='190' width='140' height='150'/><polygon points='2810,340 2810,130 2950,130 2950,340 2885,100'/><rect x='2970' y='170' width='155' height='170'/><polygon points='3145,340 3145,150 3270,150 3270,340 3210,120'/><rect x='3300' y='200' width='120' height='140'/><polygon points='3430,340 3430,135 3560,135 3560,340 3495,110'/><rect x='3600' y='160' width='170' height='180'/><polygon points='3790,340 3790,150 3920,150 3920,340 3860,125'/><rect x='3960' y='200' width='120' height='140'/><polygon points='4100,340 4100,140 4180,140 4180,340 4140,115'/><polygon points='890,340 890,135 960,135 960,340 925,110'/><polygon points='1450,340 1450,125 1520,125 1520,340 1485,100'/><polygon points='2360,340 2360,130 2435,130 2435,340 2400,105'/></g></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4200' height='340' viewBox='0 0 4200 340'><g fill='%230f1a26' opacity='0.55'><rect x='0' y='190' width='140' height='150'/><polygon points='170,340 170,120 300,120 300,340 235,90'/><rect x='330' y='170' width='150' height='170'/><polygon points='500,340 500,140 650,140 650,340 580,110 560,140'/><rect x='700' y='200' width='120' height='140'/><polygon points='840,340 840,150 980,150 980,340 910,125'/><rect x='1000' y='130' width='180' height='210'/><polygon points='1210,340 1210,160 1330,160 1330,340 1270,135'/><rect x='1350' y='190' width='140' height='150'/><polygon points='1510,340 1510,130 1650,130 1650,340 1580,105'/><rect x='1680' y='170' width='150' height='170'/><polygon points='1860,340 1860,150 1990,150 1990,340 1925,125'/><rect x='2010' y='210' width='110' height='130'/><polygon points='2135,340 2135,140 2260,140 2260,340 2195,115'/><rect x='2290' y='160' width='160' height='180'/><polygon points='2470,340 2470,150 2620,150 2620,340 2560,120'/><rect x='2650' y='190' width='140' height='150'/><polygon points='2810,340 2810,130 2950,130 2950,340 2885,100'/><rect x='2970' y='170' width='155' height='170'/><polygon points='3145,340 3145,150 3270,150 3270,340 3210,120'/><rect x='3300' y='200' width='120' height='140'/><polygon points='3430,340 3430,135 3560,135 3560,340 3495,110'/><rect x='3600' y='160' width='170' height='180'/><polygon points='3790,340 3790,150 3920,150 3920,340 3860,125'/><rect x='3960' y='200' width='120' height='140'/><polygon points='4100,340 4100,140 4180,140 4180,340 4140,115'/><polygon points='890,340 890,135 960,135 960,340 925,110'/><polygon points='1450,340 1450,125 1520,125 1520,340 1485,100'/><polygon points='2360,340 2360,130 2435,130 2435,340 2400,105'/></g></svg>");
+  background-size: 3600px 100%, 3600px 100%, 4200px 100%, 4200px 100%;
+  background-position: 0 100%, calc(3600px - 1px) 100%, 0 100%, calc(4200px - 1px) 100%;
+  animation: skylineLoop 80s linear infinite;
+}
+@keyframes skylineLoop {
+  0% { background-position: 0 100%, calc(3600px - 1px) 100%, 0 100%, calc(4200px - 1px) 100%; }
+  100% { background-position: calc(-3600px - 1px) 100%, -1px 100%, calc(-4200px - 1px) 100%, -1px 100%; }
+}
+
+/* Foreground skyline in front of clocks (bottom strip only) */
+.clocks::before { content:""; position:absolute; left:0; right:0; bottom:0; height:28%; z-index:12; pointer-events:none;
+  background-repeat: no-repeat, no-repeat;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4200' height='320' viewBox='0 0 4200 320'><g fill='%230a1220' opacity='0.9'><rect x='0' y='190' width='140' height='130'/><polygon points='170,320 170,140 300,140 300,320 235,110'/><rect x='330' y='190' width='150' height='130'/><polygon points='500,320 500,160 650,160 650,320 580,130 560,160'/><rect x='700' y='210' width='120' height='110'/><polygon points='840,320 840,170 980,170 980,320 910,145'/><rect x='1000' y='150' width='180' height='170'/><polygon points='1210,320 1210,180 1330,180 1330,320 1270,155'/><rect x='1350' y='210' width='140' height='110'/><polygon points='1510,320 1510,160 1650,160 1650,320 1580,135'/><rect x='1680' y='200' width='150' height='120'/><polygon points='1860,320 1860,180 1990,180 1990,320 1925,155'/><rect x='2010' y='230' width='110' height='90'/><polygon points='2135,320 2135,170 2260,170 2260,320 2195,145'/><rect x='2290' y='190' width='160' height='130'/><polygon points='2470,320 2470,180 2620,180 2620,320 2560,150'/><rect x='2650' y='210' width='140' height='110'/><polygon points='2810,320 2810,160 2950,160 2950,320 2885,130'/><rect x='2970' y='200' width='155' height='120'/><polygon points='3145,320 3145,170 3270,170 3270,320 3210,140'/><rect x='3300' y='220' width='120' height='100'/><polygon points='3430,320 3430,165 3560,165 3560,320 3495,140'/><rect x='3600' y='190' width='170' height='130'/><polygon points='3790,320 3790,160 3920,160 3920,320 3860,135'/><rect x='3960' y='220' width='120' height='100'/></g><g fill='%23ffd85a' opacity='0.45'><g transform='translate(1000,165)'><rect x='10' y='10' width='6' height='9'/><rect x='30' y='10' width='6' height='9'/><rect x='50' y='10' width='6' height='9'/><rect x='70' y='10' width='6' height='9'/><rect x='10' y='32' width='6' height='9'/><rect x='30' y='32' width='6' height='9'/><rect x='50' y='32' width='6' height='9'/><rect x='70' y='32' width='6' height='9'/></g><g transform='translate(1510,165)'><rect x='8' y='8' width='6' height='9'/><rect x='24' y='8' width='6' height='9'/><rect x='40' y='8' width='6' height='9'/><rect x='56' y='8' width='6' height='9'/><rect x='8' y='28' width='6' height='9'/><rect x='24' y='28' width='6' height='9'/><rect x='40' y='28' width='6' height='9'/><rect x='56' y='28' width='6' height='9'/></g></g></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4200' height='320' viewBox='0 0 4200 320'><g fill='%230a1220' opacity='0.9'><rect x='0' y='190' width='140' height='130'/><polygon points='170,320 170,140 300,140 300,320 235,110'/><rect x='330' y='190' width='150' height='130'/><polygon points='500,320 500,160 650,160 650,320 580,130 560,160'/><rect x='700' y='210' width='120' height='110'/><polygon points='840,320 840,170 980,170 980,320 910,145'/><rect x='1000' y='150' width='180' height='170'/><polygon points='1210,320 1210,180 1330,180 1330,320 1270,155'/><rect x='1350' y='210' width='140' height='110'/><polygon points='1510,320 1510,160 1650,160 1650,320 1580,135'/><rect x='1680' y='200' width='150' height='120'/><polygon points='1860,320 1860,180 1990,180 1990,320 1925,155'/><rect x='2010' y='230' width='110' height='90'/><polygon points='2135,320 2135,170 2260,170 2260,320 2195,145'/><rect x='2290' y='190' width='160' height='130'/><polygon points='2470,320 2470,180 2620,180 2620,320 2560,150'/><rect x='2650' y='210' width='140' height='110'/><polygon points='2810,320 2810,160 2950,160 2950,320 2885,130'/><rect x='2970' y='200' width='155' height='120'/><polygon points='3145,320 3145,170 3270,170 3270,320 3210,140'/><rect x='3300' y='220' width='120' height='100'/><polygon points='3430,320 3430,165 3560,165 3560,320 3495,140'/><rect x='3600' y='190' width='170' height='130'/><polygon points='3790,320 3790,160 3920,160 3920,320 3860,135'/><rect x='3960' y='220' width='120' height='100'/></g><g fill='%23ffd85a' opacity='0.45'><g transform='translate(1000,165)'><rect x='10' y='10' width='6' height='9'/><rect x='30' y='10' width='6' height='9'/><rect x='50' y='10' width='6' height='9'/><rect x='70' y='10' width='6' height='9'/><rect x='10' y='32' width='6' height='9'/><rect x='30' y='32' width='6' height='9'/><rect x='50' y='32' width='6' height='9'/><rect x='70' y='32' width='6' height='9'/></g><g transform='translate(1510,165)'><rect x='8' y='8' width='6' height='9'/><rect x='24' y='8' width='6' height='9'/><rect x='40' y='8' width='6' height='9'/><rect x='56' y='8' width='6' height='9'/><rect x='8' y='28' width='6' height='9'/><rect x='24' y='28' width='6' height='9'/><rect x='40' y='28' width='6' height='9'/><rect x='56' y='28' width='6' height='9'/></g></g></svg>");
+  background-size: 4200px 100%, 4200px 100%;
+  background-position: 0 100%, calc(4200px - 1px) 100%;
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 85%);
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 85%);
+  animation: skylineFgLoop 95s linear infinite;
+}
+@keyframes skylineFgLoop {
+  0% { background-position: 0 100%, calc(4200px - 1px) 100%; }
+  100% { background-position: calc(-4200px - 1px) 100%, -1px 100%; }
+}
+/* Screen 1 */
+.clock { background: var(--panel); border: 1px solid #232938; border-radius: 16px; padding: 12px; display:flex; flex-direction:column; align-items:center; }
+.clock .value { font-size: 40px; font-weight: 700; }
+
+.sponsors-line { display:flex; align-items:center; gap:10px; padding: 8px 16px; background: rgba(0,0,0,0.35); border-top: 1px solid #2c3; border-bottom: 1px solid #2c3; }
+.sponsors-line .badge { background:#1e293b; color:#b9f6c9; border:1px solid #2c3; padding:4px 10px; border-radius:999px; font-size:12px; }
+.sponsors-line .scroll { flex:1; color:#b9f6c9; white-space: nowrap; overflow:hidden; text-overflow: ellipsis; }
+.bluebar { background:#1e3a8a; color:#dbeafe; padding:10px 16px; border-top:1px solid #3b82f6; border-bottom:1px solid #1d4ed8; font-weight:600; }
+.news-hero { padding: 24px 16px; }
+.news-hero .title { font-size: clamp(28px, 4vw, 48px); font-weight: 800; letter-spacing: .2px; }
+.news-hero .desc { font-size: clamp(14px, 2vw, 22px); opacity: .9; }
+
+/* Screen 2 */
+.ticker { padding: 6px 0; background: #0b0e12; border-top:1px solid #0b3; border-bottom:1px solid #0b3; }
+/* Hide sponsor ticker on viewer screen 2 */
+.screen-2 .ticker { display: none; }
+.ticker .inner { white-space: nowrap; animation: marquee 25s linear infinite; padding-left: 100%; color:#b9f6c9; }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+.media-block { position: relative; padding: 16px; height: min(52vh, 60vw); min-height: 300px; }
+.media-block .bg, .media-block .player { position:absolute; inset:16px; border-radius:16px; overflow:hidden; }
+.media-block .bg { z-index: 1; background:#000; }
+.media-block .player { z-index: 2; display:flex; align-items:center; justify-content:center; }
+.media-block .player .frame { background:#000; border-radius:12px; box-shadow: 0 10px 40px rgba(0,0,0,.6); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.media-block .player .frame > iframe, .media-block .player .frame > video { width:100%; height:100%; object-fit: contain; border:0; background:#000; }
+.media-block .bg img, .media-block .bg video { width:100%; height:100%; object-fit:cover; object-position:center center; position: absolute; inset:0; }
+/* Cinematic crops for background */
+.media-block .bg .crop-185 { height: 104.1%; top: -2.05%; }
+.media-block .bg .crop-239 { height: 112.5%; top: -6.25%; }
+.media-block .bg .fit-cover { object-fit: cover; }
+.media-block .bg .fit-contain { object-fit: contain; }
+.media-block .bg .bars { position:absolute; left:0; right:0; background:#000; }
+.media-block .bg .bars.top { top:0; }
+.media-block .bg .bars.bottom { bottom:0; }
+/* Split-side filler boxes to remove pillar bars (soft edges) */
+.media-block .bg .main { position:absolute; inset:0; z-index: 1; object-fit: cover; }
+.media-block .bg .side { position:absolute; top:0; bottom:0; width:0; z-index: 0; overflow:hidden; pointer-events:none; filter: blur(10px); transform: scale(1.05); opacity:.9; }
+.media-block .bg .side.left { left:0; }
+.media-block .bg .side.right { right:0; }
+.media-block .bg .side video, .media-block .bg .side img { width:100%; height:100%; object-fit: cover; }
+.media-block .bg .side.left video, .media-block .bg .side.left img { object-position: left center; }
+.media-block .bg .side.right video, .media-block .bg .side.right img { object-position: right center; }
+.media-block .bg .edge { position:absolute; top:0; bottom:0; width:36px; z-index: 2; pointer-events:none; }
+.media-block .bg .edge.left { background: linear-gradient(to right, rgba(0,0,0,.35), rgba(0,0,0,0)); }
+.media-block .bg .edge.right { background: linear-gradient(to left, rgba(0,0,0,.35), rgba(0,0,0,0)); }
+/* The actual media is inside .player .frame now */
+.unmute-overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,.35); color:#fff; font-weight:700; letter-spacing:.3px; cursor:pointer; z-index:5; }
+.unmute-overlay .btn { background:#111a; border:1px solid #3b82f6; padding:10px 14px; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,.4); }
+.unmute-overlay.hidden { display:none; }
+.pills { position: relative; overflow: hidden; padding:8px 16px; }
+.pills .track { display:inline-flex; gap:12px; align-items:center; white-space:nowrap; will-change: transform; animation: pillsScroll var(--dur, 30s) linear infinite; pointer-events: none; }
+@keyframes pillsScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.pill { display:inline-flex; align-items:center; gap:8px; background:#1f2937; color:#e5e7eb; border:1px solid #334155; border-radius:999px; padding:6px 10px; font-size:12px; }
+.pill .dot { width:8px; height:8px; border-radius:999px; background:#7c3aed; }
+
+.news { padding: 12px 16px; background: linear-gradient(180deg, rgba(255,0,0,0.1), rgba(0,0,0,0)); min-height: 72px; }
+.news .item { font-size: 28px; font-weight: 700; line-height:1.2; text-shadow: 0 2px 0 rgba(0,0,0,.4); }
+.news .desc { font-size: 16px; color: #f0f0f0; opacity: .9; }
+
+.guide { display:grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 16px; }
+.tips, .weather { background: var(--panel); border: 1px solid #232938; border-radius: 16px; padding: 16px; }
+.tips .tip { font-size: 18px; margin: 4px 0; opacity: .9; }
+.weather .city { display:flex; align-items:baseline; justify-content:space-between; padding: 6px 0; border-bottom:1px dashed #273049; }
+.weather .city:last-child { border-bottom: 0; }
+.weather .name { color:#bcd; }
+.weather .temp { font-weight: 700; font-size: 22px; }
+.weather .cond { color:#9ab; font-size: 12px; }
+
+/* Seamless skyline loop override using double backgrounds per layer */
+#app .clocks::after {
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  /* far A, far B, near A, near B */
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='3600' height='320' viewBox='0 0 3600 320'><g fill='%231a2c3a' opacity='0.28'><rect x='0' y='170' width='120' height='150'/><rect x='140' y='150' width='160' height='170'/><polygon points='330,320 330,145 470,145 470,320 400,120'/><rect x='510' y='170' width='130' height='150'/><rect x='660' y='130' width='180' height='190'/><polygon points='870,320 870,140 1000,140 1000,320 945,115'/><rect x='1030' y='180' width='120' height='140'/><rect x='1170' y='150' width='160' height='170'/><polygon points='1360,320 1360,155 1500,155 1500,320 1430,130'/><rect x='1530' y='200' width='100' height='120'/><rect x='1640' y='160' width='170' height='160'/><polygon points='1850,320 1850,150 1980,150 1980,320 1920,125'/><rect x='2010' y='170' width='140' height='150'/><rect x='2170' y='140' width='170' height='180'/><polygon points='2380,320 2380,145 2520,145 2520,320 2450,120'/><rect x='2560' y='185' width='110' height='135'/><rect x='2690' y='150' width='175' height='170'/><polygon points='2890,320 2890,150 3030,150 3030,320 2960,125'/><rect x='3070' y='200' width='105' height='120'/><rect x='3190' y='160' width='170' height='160'/></g></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='3600' height='320' viewBox='0 0 3600 320'><g fill='%231a2c3a' opacity='0.28'><rect x='0' y='170' width='120' height='150'/><rect x='140' y='150' width='160' height='170'/><polygon points='330,320 330,145 470,145 470,320 400,120'/><rect x='510' y='170' width='130' height='150'/><rect x='660' y='130' width='180' height='190'/><polygon points='870,320 870,140 1000,140 1000,320 945,115'/><rect x='1030' y='180' width='120' height='140'/><rect x='1170' y='150' width='160' height='170'/><polygon points='1360,320 1360,155 1500,155 1500,320 1430,130'/><rect x='1530' y='200' width='100' height='120'/><rect x='1640' y='160' width='170' height='160'/><polygon points='1850,320 1850,150 1980,150 1980,320 1920,125'/><rect x='2010' y='170' width='140' height='150'/><rect x='2170' y='140' width='170' height='180'/><polygon points='2380,320 2380,145 2520,145 2520,320 2450,120'/><rect x='2560' y='185' width='110' height='135'/><rect x='2690' y='150' width='175' height='170'/><polygon points='2890,320 2890,150 3030,150 3030,320 2960,125'/><rect x='3070' y='200' width='105' height='120'/><rect x='3190' y='160' width='170' height='160'/></g></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4200' height='340' viewBox='0 0 4200 340'><g fill='%230f1a26' opacity='0.70'><rect x='0' y='190' width='140' height='150'/><polygon points='170,340 170,120 300,120 300,340 235,90'/><rect x='330' y='170' width='150' height='170'/><polygon points='500,340 500,140 650,140 650,340 580,110 560,140'/><rect x='700' y='200' width='120' height='140'/><polygon points='840,340 840,150 980,150 980,340 910,125'/><rect x='1000' y='130' width='180' height='210'/><polygon points='1210,340 1210,160 1330,160 1330,340 1270,135'/><rect x='1350' y='190' width='140' height='150'/><polygon points='1510,340 1510,130 1650,130 1650,340 1580,105'/><rect x='1680' y='170' width='150' height='170'/><polygon points='1860,340 1860,150 1990,150 1990,340 1925,125'/><rect x='2010' y='210' width='110' height='130'/><polygon points='2135,340 2135,140 2260,140 2260,340 2195,115'/><rect x='2290' y='160' width='160' height='180'/><polygon points='2470,340 2470,150 2620,150 2620,340 2560,120'/><rect x='2650' y='190' width='140' height='150'/><polygon points='2810,340 2810,130 2950,130 2950,340 2885,100'/><rect x='2970' y='170' width='155' height='170'/><polygon points='3145,340 3145,150 3270,150 3270,340 3210,120'/><rect x='3300' y='200' width='120' height='140'/><polygon points='3430,340 3430,135 3560,135 3560,340 3495,110'/><rect x='3600' y='160' width='170' height='180'/><polygon points='3790,340 3790,150 3920,150 3920,340 3860,125'/><rect x='3960' y='200' width='120' height='140'/><polygon points='4100,340 4100,140 4180,140 4180,340 4140,115'/><polygon points='890,340 890,135 960,135 960,340 925,110'/><polygon points='1450,340 1450,125 1520,125 1520,340 1485,100'/><polygon points='2360,340 2360,130 2435,130 2435,340 2400,105'/></g><g fill='%23ffd85a' opacity='0.38'><g transform='translate(1000,140)'><rect x='10' y='10' width='6' height='9'/><rect x='30' y='10' width='6' height='9'/><rect x='50' y='10' width='6' height='9'/><rect x='70' y='10' width='6' height='9'/><rect x='10' y='32' width='6' height='9'/><rect x='30' y='32' width='6' height='9'/><rect x='50' y='32' width='6' height='9'/><rect x='70' y='32' width='6' height='9'/><rect x='10' y='54' width='6' height='9'/><rect x='30' y='54' width='6' height='9'/><rect x='50' y='54' width='6' height='9'/><rect x='70' y='54' width='6' height='9'/></g><g transform='translate(1510,140)'><rect x='8' y='8' width='6' height='9'/><rect x='24' y='8' width='6' height='9'/><rect x='40' y='8' width='6' height='9'/><rect x='56' y='8' width='6' height='9'/><rect x='8' y='28' width='6' height='9'/><rect x='24' y='28' width='6' height='9'/><rect x='40' y='28' width='6' height='9'/><rect x='56' y='28' width='6' height='9'/></g><g transform='translate(2290,170)'><rect x='12' y='12' width='5' height='8'/><rect x='30' y='12' width='5' height='8'/><rect x='48' y='12' width='5' height='8'/><rect x='66' y='12' width='5' height='8'/><rect x='12' y='30' width='5' height='8'/><rect x='30' y='30' width='5' height='8'/><rect x='48' y='30' width='5' height='8'/><rect x='66' y='30' width='5' height='8'/><rect x='12' y='48' width='5' height='8'/><rect x='30' y='48' width='5' height='8'/><rect x='48' y='48' width='5' height='8'/><rect x='66' y='48' width='5' height='8'/></g><g transform='translate(2970,180)'><rect x='8' y='10' width='6' height='8'/><rect x='24' y='10' width='6' height='8'/><rect x='40' y='10' width='6' height='8'/><rect x='56' y='10' width='6' height='8'/><rect x='8' y='28' width='6' height='8'/><rect x='24' y='28' width='6' height='8'/><rect x='40' y='28' width='6' height='8'/><rect x='56' y='28' width='6' height='8'/></g><g transform='translate(3430,150)'><rect x='10' y='10' width='5' height='8'/><rect x='26' y='10' width='5' height='8'/><rect x='42' y='10' width='5' height='8'/><rect x='58' y='10' width='5' height='8'/><rect x='10' y='26' width='5' height='8'/><rect x='26' y='26' width='5' height='8'/><rect x='42' y='26' width='5' height='8'/><rect x='58' y='26' width='5' height='8'/></g><g transform='translate(3790,160)'><rect x='8' y='12' width='5' height='8'/><rect x='22' y='12' width='5' height='8'/><rect x='36' y='12' width='5' height='8'/><rect x='50' y='12' width='5' height='8'/><rect x='8' y='30' width='5' height='8'/><rect x='22' y='30' width='5' height='8'/><rect x='36' y='30' width='5' height='8'/><rect x='50' y='30' width='5' height='8'/></g></g></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4200' height='340' viewBox='0 0 4200 340'><g fill='%230f1a26' opacity='0.70'><rect x='0' y='190' width='140' height='150'/><polygon points='170,340 170,120 300,120 300,340 235,90'/><rect x='330' y='170' width='150' height='170'/><polygon points='500,340 500,140 650,140 650,340 580,110 560,140'/><rect x='700' y='200' width='120' height='140'/><polygon points='840,340 840,150 980,150 980,340 910,125'/><rect x='1000' y='130' width='180' height='210'/><polygon points='1210,340 1210,160 1330,160 1330,340 1270,135'/><rect x='1350' y='190' width='140' height='150'/><polygon points='1510,340 1510,130 1650,130 1650,340 1580,105'/><rect x='1680' y='170' width='150' height='170'/><polygon points='1860,340 1860,150 1990,150 1990,340 1925,125'/><rect x='2010' y='210' width='110' height='130'/><polygon points='2135,340 2135,140 2260,140 2260,340 2195,115'/><rect x='2290' y='160' width='160' height='180'/><polygon points='2470,340 2470,150 2620,150 2620,340 2560,120'/><rect x='2650' y='190' width='140' height='150'/><polygon points='2810,340 2810,130 2950,130 2950,340 2885,100'/><rect x='2970' y='170' width='155' height='170'/><polygon points='3145,340 3145,150 3270,150 3270,340 3210,120'/><rect x='3300' y='200' width='120' height='140'/><polygon points='3430,340 3430,135 3560,135 3560,340 3495,110'/><rect x='3600' y='160' width='170' height='180'/><polygon points='3790,340 3790,150 3920,150 3920,340 3860,125'/><rect x='3960' y='200' width='120' height='140'/><polygon points='4100,340 4100,140 4180,140 4180,340 4140,115'/><polygon points='890,340 890,135 960,135 960,340 925,110'/><polygon points='1450,340 1450,125 1520,125 1520,340 1485,100'/><polygon points='2360,340 2360,130 2435,130 2435,340 2400,105'/></g><g fill='%23ffd85a' opacity='0.38'><g transform='translate(1000,140)'><rect x='10' y='10' width='6' height='9'/><rect x='30' y='10' width='6' height='9'/><rect x='50' y='10' width='6' height='9'/><rect x='70' y='10' width='6' height='9'/><rect x='10' y='32' width='6' height='9'/><rect x='30' y='32' width='6' height='9'/><rect x='50' y='32' width='6' height='9'/><rect x='70' y='32' width='6' height='9'/><rect x='10' y='54' width='6' height='9'/><rect x='30' y='54' width='6' height='9'/><rect x='50' y='54' width='6' height='9'/><rect x='70' y='54' width='6' height='9'/></g><g transform='translate(1510,140)'><rect x='8' y='8' width='6' height='9'/><rect x='24' y='8' width='6' height='9'/><rect x='40' y='8' width='6' height='9'/><rect x='56' y='8' width='6' height='9'/><rect x='8' y='28' width='6' height='9'/><rect x='24' y='28' width='6' height='9'/><rect x='40' y='28' width='6' height='9'/><rect x='56' y='28' width='6' height='9'/></g><g transform='translate(2290,170)'><rect x='12' y='12' width='5' height='8'/><rect x='30' y='12' width='5' height='8'/><rect x='48' y='12' width='5' height='8'/><rect x='66' y='12' width='5' height='8'/><rect x='12' y='30' width='5' height='8'/><rect x='30' y='30' width='5' height='8'/><rect x='48' y='30' width='5' height='8'/><rect x='66' y='30' width='5' height='8'/><rect x='12' y='48' width='5' height='8'/><rect x='30' y='48' width='5' height='8'/><rect x='48' y='48' width='5' height='8'/><rect x='66' y='48' width='5' height='8'/></g><g transform='translate(2970,180)'><rect x='8' y='10' width='6' height='8'/><rect x='24' y='10' width='6' height='8'/><rect x='40' y='10' width='6' height='8'/><rect x='56' y='10' width='6' height='8'/><rect x='8' y='28' width='6' height='8'/><rect x='24' y='28' width='6' height='8'/><rect x='40' y='28' width='6' height='8'/><rect x='56' y='28' width='6' height='8'/></g><g transform='translate(3430,150)'><rect x='10' y='10' width='5' height='8'/><rect x='26' y='10' width='5' height='8'/><rect x='42' y='10' width='5' height='8'/><rect x='58' y='10' width='5' height='8'/><rect x='10' y='26' width='5' height='8'/><rect x='26' y='26' width='5' height='8'/><rect x='42' y='26' width='5' height='8'/><rect x='58' y='26' width='5' height='8'/></g><g transform='translate(3790,160)'><rect x='8' y='12' width='5' height='8'/><rect x='22' y='12' width='5' height='8'/><rect x='36' y='12' width='5' height='8'/><rect x='50' y='12' width='5' height='8'/><rect x='8' y='30' width='5' height='8'/><rect x='22' y='30' width='5' height='8'/><rect x='36' y='30' width='5' height='8'/><rect x='50' y='30' width='5' height='8'/></g></g></svg>");
+  background-size: 3600px 100%, 3600px 100%, 4200px 100%, 4200px 100%;
+background-position: 0 100%, calc(3600px - 1px) 100%, 0 100%, calc(4200px - 1px) 100%;
+  animation: skylineLoop 80s linear infinite;
+}
+@keyframes skylineLoop {
+  0% { background-position: 0 100%, calc(3600px - 1px) 100%, 0 100%, calc(4200px - 1px) 100%; }
+  100% { background-position: calc(-3600px - 1px) 100%, -1px 100%, calc(-4200px - 1px) 100%, -1px 100%; }
+}
+
+@media (max-width: 900px){
+  .clocks { grid-template-columns: 1fr; }
+  .media-block .player iframe, .media-block .player video { width:100%; height:100%; }
+  .guide { grid-template-columns: 1fr; }
+}

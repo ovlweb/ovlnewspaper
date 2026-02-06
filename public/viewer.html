@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Viewer</title>
+  <link rel="stylesheet" href="/styles/viewer.css" />
+</head>
+<body>
+  <div id="app" data-screen="1">
+    <div class="topbar">
+      <div class="date-time">
+        <div class="date" id="date"></div>
+        <div class="logo-wrap"><img id="logo" alt="LOGO"/></div>
+        <div class="time" id="time"></div>
+      </div>
+      <div class="progress"></div>
+    </div>
+
+    <!-- Screen 1: News + clocks (as in concept first image) -->
+    <section class="screen screen-1">
+      <div class="clocks" id="clocks"></div>
+      <div class="sponsors-line"><span class="badge" id="i18n-sponsors">Спонсоры</span><div class="scroll" id="ticker1"></div></div>
+      <div class="bluebar" id="bluebar">News repost >> (panorama)</div>
+      <div class="news-hero" id="newsHero"></div>
+    </section>
+
+    <!-- Screen 2: Media player + ticker + tips+weather (second concept) -->
+    <section class="screen screen-2" hidden>
+      <section class="ticker"><div class="inner" id="ticker"></div></section>
+      <section class="media-block">
+        <div class="bg" id="bg"></div>
+        <div class="player" id="player"></div>
+      </section>
+      <div class="pills" id="pills"></div>
+    <section class="guide">
+      <div class="tips" id="tips"><div class="info-auto-title"></div></div>
+      <div class="weather" id="weather"></div>
+    </section>
+    </section>
+  </div>
+
+  <script src="/scripts/viewer.stable.js"></script>
+</body>
+</html>

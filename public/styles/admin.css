@@ -1,0 +1,28 @@
+/* Simple clean admin UI */
+:root {
+  --bg: #0f1115;
+  --panel: #161a22;
+  --text: #e8e8ea;
+  --muted: #a7a7ad;
+  --accent: #4cc2ff;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); }
+header { display:flex; align-items:center; justify-content:space-between; padding:16px 24px; background: #0b0e12; position: sticky; top: 0; z-index: 5; }
+header h1 { margin: 0; font-size: 20px; }
+header a { color: var(--accent); text-decoration: none; }
+main { padding: 24px; display: grid; grid-template-columns: 1fr; gap: 20px; }
+section { background: var(--panel); border: 1px solid #232938; border-radius: 12px; padding: 16px; box-shadow: 0 1px 0 #232938; }
+.badge { font-size: 12px; background:#273049; color:#a7cbff; padding:2px 6px; border-radius: 999px; }
+section h2 { margin-top: 0; font-size: 16px; }
+.row { display:flex; gap: 8px; align-items:center; flex-wrap: wrap; }
+.add { margin-top: 8px; }
+input, textarea, select, button { background:#0f141e; color:var(--text); border:1px solid #273049; border-radius:8px; padding:8px 10px; }
+button { cursor:pointer; background:#18314f; border-color:#2f4466; }
+button:hover { background:#214166; }
+img#logoPreview { width: 120px; height: 120px; object-fit: contain; background:#0b0e12; border:1px solid #273049; border-radius:8px; }
+.help { color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+.list { display:flex; flex-direction:column; gap:6px; }
+.item { display:flex; gap:6px; align-items:center; background:#0f141e; border:1px solid #273049; border-radius:8px; padding:8px; }
+.item input { flex:1; }
+.badge { font-size: 12px; background:#273049; color:#a7cbff; padding:2px 6px; border-radius: 999px; }
