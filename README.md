@@ -3,7 +3,7 @@
 
 
 <div align="center">
-  <img height="150" src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif"  />
+  <img height="150" src="[https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif](https://github.com/ovlweb/ovlnewspaper/blob/main/uploads/1770410003892_photo_2025-09-16_07.15.49.jpeg?raw=true)"  />
 </div>
 
 ###
