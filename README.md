@@ -47,3 +47,21 @@
 <h2 align="center">npm start</h2>
 
 ###
+
+###
+
+<p align="center">Видео работоспособности движка и шаблон для фоновой рекламы</p>
+
+###
+
+<div align="center">
+  <video src="preview.mp4" width="320" height="240" controls></video>  />
+</div>
+
+###
+
+<div align="center">
+  <img height="200" src="/public/assets/template.png"  />
+</div>
+
+###
