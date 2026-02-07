@@ -55,7 +55,7 @@
 ###
 
 <div align="center">
-  <video src="preview.mp4" width="320" height="240" controls></video>  />
+  <video src="https://raw.githubusercontent.com/ovlweb/ovlnewspaper/refs/heads/main/preview.mp4" width="80%" controls></video>  />
 </div>
 
 ###
