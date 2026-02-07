@@ -55,13 +55,17 @@
 ###
 
 <div align="center">
-  <video src="https://raw.githubusercontent.com/ovlweb/ovlnewspaper/refs/heads/main/preview.mp4" width="80%" controls></video>  />
+  
+
+https://github.com/user-attachments/assets/91f7f139-1791-4f40-ab9f-67117a25e45d
+
+
 </div>
 
 ###
 
 <div align="center">
-  <img height="200" src="/public/assets/template.png"  />
+  <img height="500" src="/public/assets/template.png"  />
 </div>
 
 ###
